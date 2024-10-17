@@ -14,8 +14,8 @@
 
 			embeddedservice_bootstrap.init(
 				'00Daj00000EAo59',
-				'Test_Web_Chat',
-				'https://daj00000eao59ead-dev-ed.develop.my.site.com/ESWTestWebChat1729180107108',
+				'Test_Git_Chat',
+				'https://daj00000eao59ead-dev-ed.develop.my.site.com/ESWTestGitChat1729181444275',
 				{
 					scrt2URL: 'https://daj00000eao59ead-dev-ed.develop.my.salesforce-scrt.com'
 				}
@@ -25,6 +25,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://daj00000eao59ead-dev-ed.develop.my.site.com/ESWTestWebChat1729180107108/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://daj00000eao59ead-dev-ed.develop.my.site.com/ESWTestGitChat1729181444275/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 </body>
 </html>
