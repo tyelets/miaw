@@ -20,7 +20,12 @@
 					scrt2URL: 'https://daj00000eao59ead-dev-ed.develop.my.salesforce-scrt.com'
 				}
 			);
-   			embedded_svc.settings.offlineSupportMinimizedText = "Some custom text: https://www.vrtly.ai/";
+   			embedded_svc.settings.prepopulatedPrechatFields = {
+			    FirstName: "John",
+			    LastName: "Doe",
+			    Email: "john.doe@test.com",
+			    Subject: "Hello"
+			};
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
