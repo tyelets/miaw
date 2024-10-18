@@ -19,12 +19,14 @@
 					scrt2URL: 'https://daj00000eao59ead-dev-ed.develop.my.salesforce-scrt.com'
 				}
 			);
+   console.log("before");
    			embedded_svc.settings.prepopulatedPrechatFields = {
 			    FirstName: "John",
 			    LastName: "Doe",
 			    Email: "john.doe@test.com",
 			    Subject: "Hello"
 			};
+   console.log("after");
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
