@@ -13,7 +13,7 @@
 			console.log("before");
 		   	window.addEventListener("onEmbeddedMessagingReady", () => {            
 				console.log( "Inside Prechat API!!" );
-				embeddedservice_bootstrap.prechatAPI.setPrechatFields( {
+				embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields( {
 			    FirstName: "John",
 			    LastName: "Doe",
 			    Email: "john.doe@test.com",
