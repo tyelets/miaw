@@ -11,15 +11,25 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 			console.log("before");
-		   	window.addEventListener("onEmbeddedMessagingReady", () => {            
-				console.log( "Inside Prechat API!!" );
-				embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields( {
-			    FirstName: "John",
-			    LastName: "Doe",
-			    Email: "john.doe@test.com",
-			    Subject: "Hello"
-			} );
-			});
+			window.addEventListener("onEmbeddedMessagingReady", e => {
+			  embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
+			    // List the pre-chat field names with the value and whether
+			    // it's editable in the pre-chat form.
+			    "_firstName": {
+			      "value": "Jane",
+			      "isEditableByEndUser": false
+			    },
+			    "dropdown_prechat": {
+			      "value": "A2",
+			      "isEditableByEndUser": false
+			    },
+			    "checkbox_prechat": {
+			      "value": false,
+			      "isEditableByEndUser": false
+			    }
+			  });
+});
+
     console.log("after");
 
 			embeddedservice_bootstrap.init(
