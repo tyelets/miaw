@@ -10,6 +10,17 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			console.log("before");
+		   	window.addEventListener("onEmbeddedMessagingReady", () => {            
+				console.log( "Inside Prechat API!!" );
+				embeddedservice_bootstrap.prechatAPI.setPrechatFields( {
+			    FirstName: "John",
+			    LastName: "Doe",
+			    Email: "john.doe@test.com",
+			    Subject: "Hello"
+			} );
+			});
+    console.log("after");
 
 			embeddedservice_bootstrap.init(
 				'00Daj00000EAo59',
@@ -19,14 +30,8 @@
 					scrt2URL: 'https://daj00000eao59ead-dev-ed.develop.my.salesforce-scrt.com'
 				}
 			);
-   console.log("before");
-   			embedded_svc.settings.prepopulatedPrechatFields = {
-			    FirstName: "John",
-			    LastName: "Doe",
-			    Email: "john.doe@test.com",
-			    Subject: "Hello"
-			};
-   console.log("after");
+   
+  
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
