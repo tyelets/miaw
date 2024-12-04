@@ -22,7 +22,7 @@
                 }
             );
         },
-        "https://YOUR_INSTANCE.force.com" // Replace with your Salesforce instance URL
+        "https://daj00000eao59ead-dev-ed.develop.my.site.com" // Replace with your Salesforce instance URL
     );
 </script>
 
