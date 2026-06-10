@@ -410,28 +410,28 @@
     // Ignore non-ESL messages (browser extensions, etc.)
     if (typeof data !== 'string' || !data.startsWith('ESL:')) return;
 
-    switch (data) {
+    console.log('[ESL parent] received:', data, 'from:', event.origin);
 
-      /* Mandatory handshake — must respond with ACTIVATE_EVENTS */
-      case 'ESL:MESSAGE:REGISTER':
-        event.source.postMessage('ESL:MESSAGE:ACTIVATE_EVENTS', event.origin);
-        appendLog(data, 'register');
-        appendLog('ESL:MESSAGE:ACTIVATE_EVENTS  ← sent', 'activate');
-        break;
+    // Helper: safely echo back — use '*' because Conga wraps OneSpan in a
+    // nested iframe so event.origin may differ from the iframe's top origin.
+    function reply(msg) {
+      try { event.source.postMessage(msg, '*'); } catch(e) { /* cross-origin nested frame */ }
+    }
 
-      /* 🎉 Target event — close iframe, show success */
-      case 'ESL:MESSAGE:SUCCESS:SIGNER_COMPLETE':
-        appendLog(data, 'success');
-        closeModal();
-        document.getElementById('success-banner').classList.add('visible');
-        break;
+    if (data === 'ESL:MESSAGE:REGISTER') {
+      reply('ESL:MESSAGE:ACTIVATE_EVENTS');
+      appendLog(data, 'register');
+      appendLog('ESL:MESSAGE:ACTIVATE_EVENTS  ← sent', 'activate');
 
-      /* All other events — echo back to avoid blocking interruptible ones */
-      default:
-        event.source.postMessage(data, event.origin);
-        const cls = classifyEvent(data);
-        appendLog(data, cls);
-        break;
+    } else if (data === 'ESL:MESSAGE:SUCCESS:SIGNER_COMPLETE') {
+      appendLog(data, 'success');
+      closeModal();
+      document.getElementById('success-banner').classList.add('visible');
+
+    } else {
+      // Echo all other events back so interruptible ones don't block
+      reply(data);
+      appendLog(data, classifyEvent(data));
     }
   }, false);
 
